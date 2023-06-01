@@ -21,3 +21,7 @@ Sources from
 5 https://groovemonkee.com/pages/beat-farm-free-midi-beats
 
     Instruments not seperated
+6 https://www.bandlab.com/sounds/pack/funk-drums
+    
+    Instruments not seperated
+    Some bars are a bit weird when it comes to time, should check that out further

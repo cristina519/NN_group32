@@ -1,0 +1,44 @@
+0, 0, Header, 0, 1, 43
+1, 0, Start_track
+1, 0, Tempo, 500000
+1, 0, Program_c, 0, 0
+1, 0, Note_on_c, 0, 42, 53
+1, 2, Note_on_c, 0, 53, 13
+1, 5, Note_off_c, 0, 53, 64
+1, 6, Note_on_c, 0, 41, 50
+1, 6, Note_off_c, 0, 42, 64
+1, 8, Note_off_c, 0, 41, 64
+1, 9, Note_on_c, 0, 41, 70
+1, 9, Note_on_c, 0, 54, 32
+1, 10, Note_on_c, 0, 37, 70
+1, 10, Note_off_c, 0, 41, 64
+1, 11, Note_off_c, 0, 37, 64
+1, 12, Note_off_c, 0, 54, 64
+1, 17, Note_on_c, 0, 40, 45
+1, 20, Note_off_c, 0, 40, 64
+1, 21, Note_on_c, 0, 40, 54
+1, 23, Note_off_c, 0, 40, 64
+1, 24, Note_on_c, 0, 38, 40
+1, 26, Note_off_c, 0, 38, 64
+1, 30, Note_on_c, 0, 38, 37
+1, 37, Note_off_c, 0, 38, 64
+1, 41, Note_on_c, 0, 57, 55
+1, 42, Note_on_c, 0, 38, 31
+1, 44, Note_on_c, 0, 63, 9
+1, 45, Note_off_c, 0, 38, 64
+1, 47, Note_off_c, 0, 57, 64
+1, 47, Note_off_c, 0, 63, 64
+1, 50, Note_on_c, 0, 37, 25
+1, 53, Note_off_c, 0, 37, 64
+1, 58, Note_on_c, 0, 37, 20
+1, 62, Note_off_c, 0, 37, 64
+1, 65, Note_on_c, 0, 37, 19
+1, 69, Note_off_c, 0, 37, 64
+1, 72, Note_on_c, 0, 37, 16
+1, 76, Note_off_c, 0, 37, 64
+1, 80, Note_on_c, 0, 37, 11
+1, 83, Note_off_c, 0, 37, 64
+1, 87, Note_on_c, 0, 37, 9
+1, 90, Note_off_c, 0, 37, 64
+1, 90, End_track
+0, 0, End_of_file
