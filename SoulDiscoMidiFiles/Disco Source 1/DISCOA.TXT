@@ -1,0 +1,10 @@
+DiscoA.mid is a disco beat. Unlike DiscoB, it doesn't have that kick drum on
+every downbeat, so it has a less driving bottom end. On the other hand, it
+has a more syncopated hihat part, which tends to compensate.
+    For modern drum beats, you're free to choose the drum sounds that best
+suit your preference (ie, decide whether you want ringing or dead sounds).
+    This arrangement has an 8 bar intro. The rest of the arrangement is fairly
+open-ended being that modern songs don't necessarily follow the old 16 bar
+verse/16 bar chorus of old standards. But typically, there is a 16 bar
+verse/16 bar chorus followed by an 8 or 4 bar bridge.
+
