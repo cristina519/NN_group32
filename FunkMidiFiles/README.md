@@ -28,3 +28,6 @@ Sources from
 7 https://www.bandlab.com/sounds/pack/mike-monaghan-beats-n-pieces-vol-1-loops
         
     There are some numbers missing
+8 https://syntheway.com/Funk_MIDI_Drum_Patterns.htm
+        
+    drum patterns, hope they are different from other sources
