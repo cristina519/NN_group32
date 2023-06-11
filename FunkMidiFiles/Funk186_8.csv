@@ -1,0 +1,42 @@
+0, 0, Header, 1, 2, 480
+1, 0, Start_track
+1, 0, Copyright_t, "Copyright (c) 2012 Prosonic Studios, LLC"
+1, 0, Time_signature, 4, 2, 24, 8
+1, 0, Title_t, "FNK 4-4 NmlStr TAMB"
+1, 0, End_track
+2, 0, Start_track
+2, 0, Title_t, "FNK_4-4_NmlStr_Tambourine_055"
+2, 243, Note_on_c, 9, 54, 105
+2, 270, Note_on_c, 9, 54, 0
+2, 723, Note_on_c, 9, 54, 101
+2, 750, Note_on_c, 9, 54, 0
+2, 1201, Note_on_c, 9, 54, 101
+2, 1230, Note_on_c, 9, 54, 0
+2, 1436, Note_on_c, 9, 54, 101
+2, 1470, Note_on_c, 9, 54, 0
+2, 2162, Note_on_c, 9, 54, 102
+2, 2190, Note_on_c, 9, 54, 0
+2, 2636, Note_on_c, 9, 54, 103
+2, 2670, Note_on_c, 9, 54, 0
+2, 3121, Note_on_c, 9, 54, 105
+2, 3150, Note_on_c, 9, 54, 0
+2, 3358, Note_on_c, 9, 54, 106
+2, 3390, Note_on_c, 9, 54, 0
+2, 4081, Note_on_c, 9, 54, 101
+2, 4110, Note_on_c, 9, 54, 0
+2, 4562, Note_on_c, 9, 54, 101
+2, 4590, Note_on_c, 9, 54, 0
+2, 5042, Note_on_c, 9, 54, 107
+2, 5070, Note_on_c, 9, 54, 0
+2, 5281, Note_on_c, 9, 54, 104
+2, 5310, Note_on_c, 9, 54, 0
+2, 6000, Note_on_c, 9, 54, 107
+2, 6030, Note_on_c, 9, 54, 0
+2, 6480, Note_on_c, 9, 54, 107
+2, 6510, Note_on_c, 9, 54, 0
+2, 6957, Note_on_c, 9, 54, 102
+2, 6990, Note_on_c, 9, 54, 0
+2, 7196, Note_on_c, 9, 54, 108
+2, 7230, Note_on_c, 9, 54, 0
+2, 7680, End_track
+0, 0, End_of_file
