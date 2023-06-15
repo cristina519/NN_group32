@@ -31,3 +31,11 @@ Sources from
 8 https://syntheway.com/Funk_MIDI_Drum_Patterns.htm
         
     drum patterns, hope they are different from other sources
+
+9 https://www.bandlab.com/sounds/packs?genres=funk
+    
+    Drums frond random packs
+
+10 https://www.bandlab.com/sounds/pack/shards-drum-crush-vol-1
+
+    Midi with piano, 333 is missing
