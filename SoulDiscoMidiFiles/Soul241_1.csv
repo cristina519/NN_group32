@@ -1,0 +1,73 @@
+0, 0, Header, 0, 1, 96
+1, 0, Start_track
+1, 0, Title_t, "01 16th Hat Both\000"
+1, 0, Time_signature, 4, 2, 36, 8
+1, 0, Time_signature, 4, 2, 36, 8
+1, 0, Note_on_c, 0, 36, 118
+1, 0, Note_on_c, 0, 97, 92
+1, 12, Note_off_c, 0, 36, 64
+1, 12, Note_off_c, 0, 97, 64
+1, 48, Note_on_c, 0, 92, 85
+1, 60, Note_off_c, 0, 92, 64
+1, 71, Note_on_c, 0, 92, 55
+1, 83, Note_off_c, 0, 92, 64
+1, 95, Note_on_c, 0, 38, 111
+1, 96, Note_on_c, 0, 97, 99
+1, 107, Note_off_c, 0, 38, 64
+1, 108, Note_off_c, 0, 97, 64
+1, 143, Note_on_c, 0, 36, 105
+1, 144, Note_on_c, 0, 92, 74
+1, 155, Note_off_c, 0, 36, 64
+1, 156, Note_off_c, 0, 92, 64
+1, 168, Note_on_c, 0, 92, 47
+1, 180, Note_off_c, 0, 92, 64
+1, 191, Note_on_c, 0, 36, 116
+1, 192, Note_on_c, 0, 97, 91
+1, 203, Note_off_c, 0, 36, 64
+1, 204, Note_off_c, 0, 97, 64
+1, 238, Note_on_c, 0, 92, 79
+1, 250, Note_off_c, 0, 92, 64
+1, 261, Note_on_c, 0, 92, 47
+1, 273, Note_off_c, 0, 92, 64
+1, 287, Note_on_c, 0, 38, 109
+1, 288, Note_on_c, 0, 97, 97
+1, 299, Note_off_c, 0, 38, 64
+1, 300, Note_off_c, 0, 97, 64
+1, 335, Note_on_c, 0, 92, 67
+1, 347, Note_off_c, 0, 92, 64
+1, 359, Note_on_c, 0, 92, 47
+1, 371, Note_off_c, 0, 92, 64
+1, 383, Note_on_c, 0, 36, 116
+1, 384, Note_on_c, 0, 97, 94
+1, 395, Note_off_c, 0, 36, 64
+1, 396, Note_off_c, 0, 97, 64
+1, 432, Note_on_c, 0, 92, 72
+1, 444, Note_off_c, 0, 92, 64
+1, 455, Note_on_c, 0, 92, 49
+1, 467, Note_off_c, 0, 92, 64
+1, 479, Note_on_c, 0, 38, 112
+1, 479, Note_on_c, 0, 97, 94
+1, 491, Note_off_c, 0, 38, 64
+1, 491, Note_off_c, 0, 97, 64
+1, 525, Note_on_c, 0, 36, 106
+1, 527, Note_on_c, 0, 92, 74
+1, 537, Note_off_c, 0, 36, 64
+1, 539, Note_off_c, 0, 92, 64
+1, 551, Note_on_c, 0, 92, 46
+1, 563, Note_off_c, 0, 92, 64
+1, 572, Note_on_c, 0, 36, 115
+1, 575, Note_on_c, 0, 97, 88
+1, 584, Note_off_c, 0, 36, 64
+1, 587, Note_off_c, 0, 97, 64
+1, 622, Note_on_c, 0, 92, 69
+1, 634, Note_off_c, 0, 92, 64
+1, 644, Note_on_c, 0, 92, 54
+1, 656, Note_off_c, 0, 92, 64
+1, 670, Note_on_c, 0, 38, 112
+1, 672, Note_on_c, 0, 97, 99
+1, 682, Note_off_c, 0, 38, 64
+1, 684, Note_off_c, 0, 97, 64
+1, 718, Note_on_c, 0, 80, 94
+1, 730, Note_off_c, 0, 80, 64
+1, 730, End_track
+0, 0, End_of_file
