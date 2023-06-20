@@ -27,17 +27,23 @@ def make_binary(df, file_name):
     6 : ' 54',
     7 : ' 44' 
     }
-
+    #get the most used drum for every file independantly!
+    used_drums = df[drum].value_counts().nlargest(8)
+    #print(used_drums)
+    #print(list(used_drums.index))
+    f_drum = list(used_drums.index)
 
     note_hits = pd.DataFrame()
     #Make loop to get all most used drums
-    for idx in range(8):
-        hits_drum_idx = df.loc[(df[drum] == most_used_drums[idx]) & 
+    for idx in range(len(f_drum)):
+        hits_drum_idx = df.loc[(df[drum] == f_drum[idx]) & 
                  (df[velocity] > 0) & (df[note_on] == ' Note_on_c')]
         note_hits = pd.concat([note_hits, hits_drum_idx])
 
-
-
+    #Make all lists 8 long
+    while len(f_drum) != 8:
+        f_drum.append('0')
+    #print(f_drum)
     #Find max time
     time_out = df[time].max()
     
@@ -51,7 +57,7 @@ def make_binary(df, file_name):
             note_check = note_hits[note_hits[time].between((time_count - 60), (time_count + 60))]
 
             for idx in range(8):
-                if most_used_drums[idx] in note_check[drum].values:
+                if f_drum[idx] in note_check[drum].values:
                     f.write('1')
                 else:
                     f.write('0')
