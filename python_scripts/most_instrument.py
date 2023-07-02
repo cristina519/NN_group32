@@ -4,6 +4,8 @@ import pathlib
 import os
 import py_midicsv as pm
 
+
+#Script to find the mosed common drums used in each MIDI track
 directoryPath = pathlib.Path(__file__).parent.resolve()
 path = os.getcwd()
 

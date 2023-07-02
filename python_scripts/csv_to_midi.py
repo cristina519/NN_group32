@@ -4,7 +4,7 @@ import pathlib
 import os
 import py_midicsv as pm
 
-
+#Script to convert all .csv files in a folder to MIDI
 directoryPath = pathlib.Path(__file__).parent.resolve()
 path = os.getcwd()
 

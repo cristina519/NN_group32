@@ -4,9 +4,9 @@ import pathlib
 import os
 import py_midicsv as pm
 
+#Script to convert the binary output files of the network into .csv and MIDI files
 
-#better drums here / make scraper program that provides for the beat used
-#Now for disco v1 (should be cahnged a bit but not that hard can do tomorrow)
+#Most used drums in the Funk and Disco genre
 most_used_drums = {
     0 : ' 36',
     1 : ' 38',
@@ -48,7 +48,8 @@ for file_name in txt_files:
         flag5 = 0
         flag6 = 0
         flag7 = 0
-        while x < (size - 14): #Check dit ook nog ff of dit klopt is wel handig
+        #Loop trough the file and write the .csv
+        while x < (size - 14): 
             if binary_data[x] == '1':
                 f.write('1,' + str(time) + ', Note_on_c, 0,' + most_used_drums[0] + ', 100\n')
                 flag0 = 1
@@ -124,7 +125,7 @@ for file_name in txt_files:
 
 
 
-#Do the csv to midi conversion typathing
+#Do the csv to midi conversion 
 csv_files = glob.glob(os.path.join(directoryPath, "*.csv"))
 
 for file in csv_files:
