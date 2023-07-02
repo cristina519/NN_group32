@@ -5,7 +5,7 @@ import os
 import py_midicsv as pm
 
 
-
+#Script to convert .csv into binary files to use for training the network
 
 #Create binary file from note_hits
 def make_binary(df, file_name):
@@ -58,27 +58,6 @@ def make_binary(df, file_name):
 directoryPath = pathlib.Path(__file__).parent.resolve()
 path = os.getcwd()
 
-
-
-#Midi gathering stuff (commented out because not neccesairy)
-'''
-midi_types = ('*.mid', '*.midi')
-midi_files = []
-for types in midi_types:
-    midi_files.extend(glob.glob(os.path.join(directoryPath, types)))
-
-#Create csv files:
-for file_name in midi_files:
-    current_file = str(file_name)
-    if current_file.find('.midi'):
-        current_file = current_file.replace('.midi', '.csv')
-    else:
-        current_file = current_file.replace('.mid', '.csv')
-    csv_write = pm.midi_to_csv(file_name)
-    with open(current_file, 'w') as f:
-        f.writelines(csv_write)
-
-'''
 csv_files = glob.glob(os.path.join(directoryPath, "*.csv"))
 data = pd.DataFrame()
 
