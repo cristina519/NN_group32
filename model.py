@@ -12,7 +12,7 @@ def create_model(input_shape, output_shape):
     # Create a sequential model
     model = Sequential()
     # Add a masking layer to handle variable-length sequences
-    model.add(Masking(mask_value=0.0, input_shape=(input_shape[0], input_shape[1])))
+    model.add(Masking(mask_value=0.0, input_shape=(8,)))
     # Add dense layers with ReLU activation
     model.add(Dense(64, activation='relu'))
     model.add(Dense(64, activation='relu'))
@@ -82,7 +82,7 @@ def save_sequence_to_txt(sequence, filename):
 
 
 h = 1
-input_shape = (h, 8)
+input_shape =  (8,)
 output_shape = 8
 
 # Step 1: Read TXT files and load binary sequences
@@ -93,21 +93,29 @@ for file_path in file_paths:
     with open(file_path, 'r') as file:
         content = file.read().strip()
         # Convert the content to a list of integers
-        sequence = list(map(int, content.split(' ')))  # Splitting by space instead of '\n'
-        sequences.append(sequence)  # Append each sequence as a separate sample
+        sequence = list(content.split(' '))  # Splitting by space instead of '\n'
+        sequence = [np.array(list(seq), dtype=np.float32) for seq in sequence]
+        sequences += sequence  # Append each sequence as a separate sample
 
 sequences = np.array(sequences, dtype=object)
 
-x_train = []
-y_train = []
+print(sequences[:3])
+print(sequences)
+print(len(sequences))
+x_train = sequences[:-1]
+y_train = sequences[1:]
 
 # Step 2: Prepare the training data
-for i in range(0, len(sequences) - h, h):
-    x_train.append(sequences[i:i+h])
-    y_train.append(sequences[i+h])
-
-x_train = np.array(x_train, dtype=object).reshape(-1, h, 8)
-y_train = np.array(y_train, dtype=object).reshape(-1, 8)
+# for i in range(0, len(sequences) - h, h):
+#     x_train.append(np.array(list(sequences[i])))
+#     y_train.append(np.array(list(sequences[i+1])))
+# x_train = np.array(x_train, dtype=object)
+# y_train = np.array(y_train, dtype=object)
+#print(x_train[:3])
+#print(np.shape(x_train))
+#print(np.shape(y_train))
+# x_train = np.array(x_train, dtype=object).reshape(-1,h, 8)
+# y_train = np.array(y_train, dtype=object).reshape(-1, 8)
 
 x_train = x_train.astype('float32')
 y_train = y_train.astype('float32')
