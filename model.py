@@ -33,25 +33,14 @@ def generate_sequence(model, initial_sequence, num_bars, num_beats):
     current_input = np.array(initial_sequence).reshape(-1)
     for _ in range(num_bars):
         # Predict the next output based on the current input
-<<<<<<< Updated upstream
         output = model.predict(current_input.reshape(1, -1))
         # Transform the predicted output using a hypothesis function
         generated_output = transform_hypothesis(output[0])
         generated_sequence.append(generated_output)
-
-=======
-        #Shape veranderen
         output = model.predict(current_input)
-        # print("output:")
-        # print(output)
         # Transform the predicted output using a hypothesis function
         generated_output = transform_hypothesis(output[0])
         generated_sequence.append(generated_output)
-        # print("generated output:")
-        # print(generated_output)
-        # print("generated sequence")
-        # print(generated_sequence)
->>>>>>> Stashed changes
         # Update the current input with the generated output
         current_input = np.concatenate((current_input[num_beats:], generated_output))
     return generated_sequence
@@ -73,12 +62,10 @@ def transform_hypothesis(hypothesis_vector, threshold=0.5, scaling_factor=4):
 def generate_drum_patterns(model, initial_input, num_patterns, num_beats):
     generated_patterns = []
     current_input = np.array(initial_input)
-
     for _ in range(num_patterns):
         # Predict the next pattern based on the current input
         output = model.predict(current_input.reshape(1, -1))
         generated_patterns.append(output[0])
-
         # Update the current input with the generated pattern
         current_input = np.concatenate((current_input[num_beats:], output))
 
@@ -94,7 +81,7 @@ def save_sequence_to_txt(sequence, filename):
             # Write the formatted bar to the file
             file.write(formatted_bar + '\n')
 
-
+#Not necessary to do like this, but now the model is finished so we'll keep it this way
 h = 1
 input_shape = (h, 8)
 output_shape = 8
@@ -144,7 +131,7 @@ model.save("drum.h5")
 initial_sequence = [[1,1,1,0,1,0,1,0], [1,1,1,1,1,1,1,1], [1,1,1,1,1,1,1,1], [1,1,1,1,1,0,1,0], [1,1,1,1,0,1,1,1], [1,1,1,1,1,1,1,1], [1,1,1,1,1,1,0,1]]
 initial_sequence = np.array(initial_sequence).reshape(-1, h, 8)  # Reshape initial sequence to match the model input shape
 =======
-# model.save("Model1.h5")
+model.save("Model1.h5")
 
 model = keras.models.load_model('Model1.h5')
 # Step 5: Autonomous Generation
@@ -152,25 +139,20 @@ initial_sequence = [[1,1,0,0,0,0,0,0], [0,0,1,0,0,0,0,0], [1,0,0,0,0,0,0,0], [0,
 #initial_sequence = np.array(initial_sequence).reshape(-1, h, 8)  # Reshape initial sequence to match the model input shape
 initial_sequence = [np.array(seq, dtype=np.float32) for seq in initial_sequence]
 initial_sequence = np.array(initial_sequence, dtype=object)
-#print(initial_sequence)
->>>>>>> Stashed changes
 num_bars = 8
 num_beats = 3
+#Goes to a function that was not used, but an alternative that did not include all of the output again in the input
 #generated_sequence = generate_sequence(model, initial_sequence, num_bars, num_beats)
 
-# Step 6: Decision-making Algorithm
-#transformed_sequence = [transform_hypothesis(bar) for bar in generated_sequence]
 
-# Step 7: Feedback Loop
-<<<<<<< Updated upstream
+# Step 6: Feedback Loop
 initial_input = np.array(initial_sequence).reshape(-1, h, 8)  # Reshape initial sequence to match the model input shape
 num_patterns = 32
 generated_patterns = generate_drum_patterns(model, initial_input, num_patterns, num_beats)
 save_sequence_to_txt(generated_sequence, "generated.txt")
-=======
-#initial_input = np.array(initial_sequence).reshape(-1, h, 8)  # Reshape initial sequence to match the model input shape
 num_patterns = 20
 generated_patterns = generate_drum_patterns(model, initial_sequence, num_patterns, num_beats)
+#Algorithm not used no so it is ignored
 #save_sequence_to_txt(generated_sequence, "generated.txt")
 save_sequence_to_txt(generated_patterns, "patterns_counting6.txt")
->>>>>>> Stashed changes
+
