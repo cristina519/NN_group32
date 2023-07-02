@@ -25,6 +25,8 @@ def train_model(model, x_train, y_train, num_epochs=5):
     # Compile the model with categorical cross-entropy loss, Adam optimizer, and accuracy metric
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
     # Train the model with the given training data for the specified number of epochs
+    print(x_train.shape)
+    print(y_train.shape)
     model.fit(x_train, y_train, epochs=num_epochs, batch_size=32)
 
 
@@ -93,9 +95,10 @@ for file_path in file_paths:
     with open(file_path, 'r') as file:
         content = file.read().strip()
         # Convert the content to a list of integers
-        sequence = list(map(int, content.split(' ')))  # Splitting by space instead of '\n'
+        sequence = list(content.split(' '))  # Splitting by space instead of '\n'
+        sequence = [[int(val) for val in seq] for seq in sequence]
+        print(sequence)
         sequences.append(sequence)  # Append each sequence as a separate sample
-
 sequences = np.array(sequences, dtype=object)
 
 x_train = []
@@ -106,11 +109,15 @@ for i in range(0, len(sequences) - h, h):
     x_train.append(sequences[i:i+h])
     y_train.append(sequences[i+h])
 
-x_train = np.array(x_train, dtype=object).reshape(-1, h, 8)
-y_train = np.array(y_train, dtype=object).reshape(-1, 8)
+x_train = [np.asarray(item).astype('float32') for sublist in x_train for item in sublist]
+y_train = [np.asarray(item).astype('float32') for sublist in y_train for item in sublist]
 
-x_train = x_train.astype('float32')
-y_train = y_train.astype('float32')
+
+x_train = np.array(x_train, dtype=object)
+y_train = np.array(y_train, dtype=object)
+
+#x_train = x_train.astype('float32')
+#y_train = y_train.astype('float32')
 
 #I think something goes wrong when reading the data
 
