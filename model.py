@@ -23,7 +23,7 @@ def create_model(input_shape, output_shape):
 
 def train_model(model, x_train, y_train, num_epochs=5):
     # Compile the model with categorical cross-entropy loss, Adam optimizer, and accuracy metric
-    model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+    model.compile(loss='mean_squared_error', optimizer='adam', metrics=['accuracy'])
     # Train the model with the given training data for the specified number of epochs
     model.fit(x_train, y_train, epochs=num_epochs, batch_size=32)
 
@@ -33,6 +33,7 @@ def generate_sequence(model, initial_sequence, num_bars, num_beats):
     current_input = np.array(initial_sequence).reshape(-1)
     for _ in range(num_bars):
         # Predict the next output based on the current input
+        #Shape veranderen
         output = model.predict(current_input.reshape(1, -1))
         # Transform the predicted output using a hypothesis function
         generated_output = transform_hypothesis(output[0])
@@ -104,7 +105,7 @@ print(sequences)
 print(len(sequences))
 x_train = sequences[:-1]
 y_train = sequences[1:]
-
+#y_train = [seq[:2] for seq in y_train]
 # Step 2: Prepare the training data
 # for i in range(0, len(sequences) - h, h):
 #     x_train.append(np.array(list(sequences[i])))
