@@ -16,12 +16,14 @@ def create_model(input_shape, output_shape):
     # Add dense layers with ReLU activation
     model.add(Dense(64, activation='relu'))
     model.add(Dense(64, activation='relu'))
+    model.add(Dense(64, activation='relu'))
+
     # Add a dense output layer with softmax activation
-    model.add(Dense(output_shape, activation='softmax'))
+    model.add(Dense(output_shape))
     return model
 
 
-def train_model(model, x_train, y_train, num_epochs=5):
+def train_model(model, x_train, y_train, num_epochs=20):
     # Compile the model with categorical cross-entropy loss, Adam optimizer, and accuracy metric
     model.compile(loss='mean_squared_error', optimizer='adam', metrics=['accuracy'])
     # Train the model with the given training data for the specified number of epochs
@@ -30,17 +32,23 @@ def train_model(model, x_train, y_train, num_epochs=5):
 
 def generate_sequence(model, initial_sequence, num_bars, num_beats):
     generated_sequence = []
-    current_input = np.array(initial_sequence).reshape(-1)
+    current_input = initial_sequence.astype('float32')
+    print(current_input)
     for _ in range(num_bars):
         # Predict the next output based on the current input
         #Shape veranderen
-        output = model.predict(current_input.reshape(1, -1))
+        output = model.predict(current_input)
+        print("output:")
+        print(output)
         # Transform the predicted output using a hypothesis function
         generated_output = transform_hypothesis(output[0])
         generated_sequence.append(generated_output)
-
+        print("generated output:")
+        print(generated_output)
+        print("generated sequence")
+        print(generated_sequence)
         # Update the current input with the generated output
-        current_input = np.concatenate((current_input[num_beats:], generated_output))
+        current_input = np.concatenate((current_input[num_beats:], [generated_output]))
     return generated_sequence
 
 
@@ -59,12 +67,12 @@ def transform_hypothesis(hypothesis_vector, threshold=0.5, scaling_factor=4):
 
 def generate_drum_patterns(model, initial_input, num_patterns, num_beats):
     generated_patterns = []
-    current_input = np.array(initial_input)
+    current_input = initial_sequence.astype('float32')
 
     for _ in range(num_patterns):
         # Predict the next pattern based on the current input
-        output = model.predict(current_input.reshape(1, -1))
-        generated_patterns.append(output[0])
+        output = model.predict(current_input)
+        generated_patterns.append(transform_hypothesis(output[0]))
 
         # Update the current input with the generated pattern
         current_input = np.concatenate((current_input[num_beats:], output))
@@ -100,9 +108,9 @@ for file_path in file_paths:
 
 sequences = np.array(sequences, dtype=object)
 
-print(sequences[:3])
-print(sequences)
-print(len(sequences))
+# print(sequences[:3])
+# print(sequences)
+# print(len(sequences))
 x_train = sequences[:-1]
 y_train = sequences[1:]
 #y_train = [seq[:2] for seq in y_train]
@@ -112,7 +120,7 @@ y_train = sequences[1:]
 #     y_train.append(np.array(list(sequences[i+1])))
 # x_train = np.array(x_train, dtype=object)
 # y_train = np.array(y_train, dtype=object)
-#print(x_train[:3])
+print(x_train[:3])
 #print(np.shape(x_train))
 #print(np.shape(y_train))
 # x_train = np.array(x_train, dtype=object).reshape(-1,h, 8)
@@ -131,12 +139,13 @@ model = create_model(input_shape, output_shape)
 train_model(model, x_train, y_train)
 
 
-model.save("drum.h5")
-
-
+model.save("Model1.h5")
 # Step 5: Autonomous Generation
-initial_sequence = [[1,1,1,0,1,0,1,0], [1,1,1,1,1,1,1,1], [1,1,1,1,1,1,1,1], [1,1,1,1,1,0,1,0], [1,1,1,1,0,1,1,1], [1,1,1,1,1,1,1,1], [1,1,1,1,1,1,0,1]]
-initial_sequence = np.array(initial_sequence).reshape(-1, h, 8)  # Reshape initial sequence to match the model input shape
+initial_sequence = [[0,0,0,0,0,0,1,0], [0,0,0,1,0,0,0,0], [1,0,0,0,0,0,0,0], [1,0,0,0,0,0,1,0], [1,0,0,0,0,1,0,1], [1,0,0,0,0,1,0,0], [1,0,0,0,0,0,0,1]]
+#initial_sequence = np.array(initial_sequence).reshape(-1, h, 8)  # Reshape initial sequence to match the model input shape
+initial_sequence = [np.array(seq, dtype=np.float32) for seq in initial_sequence]
+initial_sequence = np.array(initial_sequence, dtype=object)
+#print(initial_sequence)
 num_bars = 8
 num_beats = 3
 generated_sequence = generate_sequence(model, initial_sequence, num_bars, num_beats)
@@ -144,8 +153,10 @@ generated_sequence = generate_sequence(model, initial_sequence, num_bars, num_be
 # Step 6: Decision-making Algorithm
 transformed_sequence = [transform_hypothesis(bar) for bar in generated_sequence]
 
+
 # Step 7: Feedback Loop
-initial_input = np.array(initial_sequence).reshape(-1, h, 8)  # Reshape initial sequence to match the model input shape
-num_patterns = 32
-generated_patterns = generate_drum_patterns(model, initial_input, num_patterns, num_beats)
+#initial_input = np.array(initial_sequence).reshape(-1, h, 8)  # Reshape initial sequence to match the model input shape
+num_patterns = 8
+generated_patterns = generate_drum_patterns(model, initial_sequence, num_patterns, num_beats)
 save_sequence_to_txt(generated_sequence, "generated.txt")
+save_sequence_to_txt(generated_patterns, "patterns.txt")
