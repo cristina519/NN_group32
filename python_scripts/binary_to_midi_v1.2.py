@@ -35,7 +35,7 @@ for file_name in txt_files:
 
     
         binary_data = file.read() #Returns big string
-
+     
         size = len(binary_data)
 
         x = 0
@@ -48,36 +48,36 @@ for file_name in txt_files:
         flag5 = 0
         flag6 = 0
         flag7 = 0
-        while x < (size - 7): #Check dit ook nog ff of dit klopt is wel handig
+        while x < (size - 14): #Check dit ook nog ff of dit klopt is wel handig
             if binary_data[x] == '1':
                 f.write('1,' + str(time) + ', Note_on_c, 0,' + most_used_drums[0] + ', 100\n')
                 flag0 = 1
            
-            if binary_data[x+1] == '1':
+            if binary_data[x+2] == '1':
                 f.write('1,' + str(time) + ', Note_on_c, 0,' + most_used_drums[1] + ', 100\n')
                 flag1 = 1
             
-            if binary_data[x+2] == '1':
+            if binary_data[x+4] == '1':
                 f.write('1,' + str(time) + ', Note_on_c, 0,' + most_used_drums[2] + ', 100\n')
                 flag2 = 1
              
-            if binary_data[x + 3] == '1':
+            if binary_data[x + 6] == '1':
                 f.write('1,' + str(time) + ', Note_on_c, 0,' + most_used_drums[3] + ', 100\n')
                 flag3 = 1
                
-            if binary_data[x+4] == '1':
+            if binary_data[x+8] == '1':
                 f.write('1,' + str(time) + ', Note_on_c, 0,' + most_used_drums[4] + ', 100\n')
                 flag4 = 1
               
-            if binary_data[x+5] == '1':
+            if binary_data[x+10] == '1':
                 f.write('1,' + str(time) + ', Note_on_c, 0,' + most_used_drums[5] + ', 100\n')
                 flag5 = 1
              
-            if binary_data[x+6] == '1':
+            if binary_data[x+12] == '1':
                 f.write('1,' + str(time) + ', Note_on_c, 0,' + most_used_drums[6] + ', 100\n')
                 flag6 = 1
        
-            if binary_data[x+7] == '1':
+            if binary_data[x+14] == '1':
                 f.write('1,' + str(time) + ', Note_on_c, 0,' + most_used_drums[7] + ', 100\n')
                 flag7 = 1
               
@@ -115,9 +115,9 @@ for file_name in txt_files:
                 f.write('1,' + str(time+60) + ', Note_off_c, 0,' + most_used_drums[7] + ', 0\n')
                 flag7 = 0
           
-            x += 8
+            x += 14
             time += 120
-        time = time - 120
+        
         f.write("1," + str(time)+ ', End_track\n')
         f.write("0,0,End_of_file")
 
